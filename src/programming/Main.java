@@ -1,3 +1,5 @@
+package programming;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -22,7 +24,7 @@ public class Main {
 
         courses.stream()
                 .filter(lengthPredicate)
-                .sorted(Comparator.comparing(String::length))
+                .sorted(Comparator.comparing(String::length)) // can define comparator to sort
                 .map(toUpperCase)
                 .forEach(println);
 
@@ -34,15 +36,15 @@ public class Main {
 
     private static Integer getSum(List<Integer> numbers) {
         return numbers.stream()
-//                .reduce(0, Main::sum);
+//                .reduce(0, programming.Main::sum);
 //                .reduce(0, (x, y)->(x+y));
-                .reduce(0, Integer::sum);
+                .reduce(0, Integer::sum); // reduces a list into single object
     }
 
     private static Integer sumOfSquares(List<Integer> numbers) {
 //        return getSum(numbers.stream()
 //                .map(x -> x*x)
-//                .toList());
+//                .toList()); Can return the updated list
 
         return numbers.stream()
                 .map(x -> x*x)

@@ -1,3 +1,5 @@
+package programming;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,7 +12,7 @@ public class BehaviorParameterization {
 
         List<Integer> numbers = List.of(5, 34, 23, 4, 45, 10, 34, 4, 6);
         predicateParameterization(numbers);
-        functionalParameterization(numbers);
+        functionParameterization(numbers);
 
     }
 
@@ -31,7 +33,7 @@ public class BehaviorParameterization {
                 .forEach(System.out::println);
     }
 
-    private static void functionalParameterization(List<Integer> numbers) {
+    private static void functionParameterization(List<Integer> numbers) {
         Function<Integer, Integer> squareFunction = x -> x * x;
         Function<Integer, Integer> cubeFunction = x -> x * x * x;
         Function<Integer, Integer> quadFunction = x -> x * x * x * x;

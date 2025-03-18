@@ -1,3 +1,5 @@
+package programming;
+
 import java.util.List;
 import java.util.Random;
 import java.util.function.*;
@@ -13,11 +15,12 @@ public class functionalInterfaces {
 
         Function<Integer, String> stringOutpuFunction = x -> x + " ";
 
-        Consumer<Integer> sysoutConsumer = x -> System.out.println(x);
+        // Take input | No return
+        Consumer<Integer> sysoutConsumer = System.out::println;
 
         BinaryOperator<Integer> sumBinaryOperator = (x, y) -> x + y;
 
-        //No input > Return Something
+        // No input | Return Something
         Supplier<Integer> randomIntegerSupplier = () -> {
             Random random = new Random();
             return random.nextInt(1000);
@@ -28,25 +31,29 @@ public class functionalInterfaces {
         UnaryOperator<Integer> unaryOperator = x -> 3 * x;
         System.out.println(unaryOperator.apply(10));
 
+        // Predicate with two arguments
         BiPredicate<Integer, String> biPredicate = (number, str) -> {
             return number<10 && str.length()>5;
         };
 
-        System.out.println(biPredicate.test(10, "in28minutes"));
+        System.out.println(biPredicate.test(9, "functional"));
 
+        // Function with two arguments
         BiFunction<Integer, String, String> biFunction = (number, str) -> {
             return number + " " + str;
         };
 
-        System.out.println(biFunction.apply(15, "in28minutes"));
+        System.out.println(biFunction.apply(15, "functional"));
 
+        // Consumer with two arguments
         BiConsumer<Integer, String> biConsumer = (s1,s2) -> {
             System.out.println(s1);
             System.out.println(s2);
         };
 
-        biConsumer.accept(25, "in28Minutes");
+        biConsumer.accept(25, "functional");
 
+        //
         BinaryOperator<Integer> sumBinaryOperator2 = (x, y) -> x + y;
 
         IntBinaryOperator intBinaryOperator = (x,y) -> x + y;
