@@ -1,19 +1,24 @@
 package programming;
 
+import java.math.BigInteger;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
-public class Main {
-    public static void main(String[] args) {
+public class Streaming {
+
+    public static void main(String[] args){
+
         List<Integer> numbers = List.of(5, 34, 23, 645, 45, 45, 34, 34, 234);
 
         printFromStream(List.of("Spring", "Spring boot", "AWS", "Azure", "Python", "cpp"));
-//        System.out.println("Sum of numbers = " + getSum(numbers));
+        System.out.println("Sum of numbers = " + getSum(numbers));
         System.out.println("Sum of squares of numbers = " + sumOfSquares(numbers));
 
+        intStream();
     }
 
 
@@ -51,5 +56,29 @@ public class Main {
                 .reduce(0, Integer::sum);
     }
 
+    private static void intStream() {
+        System.out.println(IntStream.range(1, 10).sum());
+        System.out.println(IntStream.rangeClosed(1, 10).sum());
 
+        System.out.println(
+                IntStream.iterate(2, e -> e + 2)
+                        .limit(10)
+//                        .peek(System.out::println)
+                        .sum()
+        );
+
+        System.out.println(
+                IntStream.iterate(2, e -> e + 2)
+                        .limit(10)
+//                        .peek(System.out::println)
+                        .boxed()
+                        .toList()
+        );
+
+        System.out.println(
+                IntStream.rangeClosed(1, 50)
+                .mapToObj(BigInteger::valueOf)
+                .reduce(BigInteger.ONE, BigInteger::multiply)
+        );
+    }
 }
