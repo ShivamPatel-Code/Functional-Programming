@@ -254,6 +254,7 @@ public class CustomClass {
 
     }
 
+    // Higher order function -> function that returns a function
     private static Predicate<Course> createPredicateWithCutoffReviewScore(int cutoffReviewScore) {
         return course -> course.getReviewScore() > cutoffReviewScore;
     }
